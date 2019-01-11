@@ -118,8 +118,6 @@ systemctl restart zabbix-agent
 
 **{#SYSTEMD.SERVICE.DESCRIPTION.MI}** - описание (description) найденного сервиса.
 
-**{#SYSTEMD.SERVICE.DESCRIPTION.MI}** - описание (description) найденного сервиса.
-
 **{#SYSTEMD.SERVICE.INSTANCE.MI}** - имя (название) инстанса (то, что после @ и до .service).
 
 **{#SYSTEMD.SERVICE.NAME.MI}** - короткое название сервиса, до инстанса (@).
