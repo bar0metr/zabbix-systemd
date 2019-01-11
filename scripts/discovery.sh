@@ -3,11 +3,11 @@
 IFS_BAK=${IFS}
 IFS="
 "
-if [ -z $1 ];
+if [ -z $4 ];
 then
 	dl=0
-	service_list=$(systemctl list-units --type=service | grep "active" | grep -v '@' | awk '{print $1}' | sed -e 's/.service//')
-	descr_list=(`systemctl list-units --type=service | grep "active" | grep -v '@' | awk '{$1=$2=$3=$4=""; print $0}'`)
+	service_list=$(systemctl list-units --type=service | grep -v '@' | grep "$1 $2 $3" | awk '{print $1}' | sed -e 's/.service//')
+	descr_list=(`systemctl list-units --type=service | grep -v '@' | grep "$1 $2 $3" |  awk '{$1=$2=$3=$4=""; print $0}'`)
 	echo -n '{"data":['
 	for s in ${service_list}
 		do 
@@ -19,8 +19,8 @@ then
 else
 
 	dl=0
-	service_list=$(systemctl list-units --type=service | grep "active" | grep '@' | awk '{print $1}' | sed -e 's/.service//')
-	descr_list=(`systemctl list-units --type=service | grep "active" | grep '@' | awk '{$1=$2=$3=$4=""; print $0}'`)
+	service_list=$(systemctl list-units --type=service | grep '@' | grep "$1 $2 $3" | awk '{print $1}' | sed -e 's/.service//')
+	descr_list=(`systemctl list-units --type=service | grep '@' | grep "$1 $2 $3" | awk '{$1=$2=$3=$4=""; print $0}'`)
 	echo -n '{"data":['
 	for s in ${service_list}
 		do 
